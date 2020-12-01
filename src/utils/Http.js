@@ -5,7 +5,7 @@ import userLogin from './UserLogin';
 import MyRouter from '@/router';
 
 let instance = axios.create({
-  baseURL:'',
+  baseURL:'http://3541l1m171.qicp.vip',
   headers: {
     'content-type': 'application/json;charset=UTF-8'
   }
