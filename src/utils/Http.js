@@ -5,7 +5,7 @@ import userLogin from './UserLogin';
 import MyRouter from '@/router';
 
 let instance = axios.create({
-  baseURL:config.HTTPBASEURL,
+  baseURL:'',
   headers: {
     'content-type': 'application/json;charset=UTF-8'
   }

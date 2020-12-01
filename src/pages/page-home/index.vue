@@ -1,76 +1,18 @@
 <template>
   <div id="page-home">
-    <!--<div class="qrcode">-->
-      <!--<div v-if="qrCodeUrl">-->
-        <!--<p><img :src="qrCodeUrl" alt=""></p>-->
-        <!--<p><a target="_blank" :href="qrCodeUrl">点击下载商户二维码</a></p>-->
-      <!--</div>-->
-      <!--<p v-else>欢迎进入商户服务平台</p>-->
-    <!--</div>-->
-    <!--<h1>欢迎进入颂车商户服务平台</h1>-->
-    <!--<i-row :gutter="24">-->
-      <!--<i-col span="12">-->
-        <!--<i-card>-->
-          <!--<p slot="title" class="card-title list">进件统计</p>-->
-          <!--&lt;!&ndash;<span slot="extra">今日还款成功数：120</span>&ndash;&gt;-->
-          <!--<div class="chart-content">-->
-            <!--<vue2-highcharts :options="todayDutyChartsOptions" ref="paybackChart"></vue2-highcharts>-->
-          <!--</div>-->
-        <!--</i-card>-->
-      <!--</i-col>-->
-      <!--<i-col span="12">-->
-        <!--<i-card>-->
-          <!--<p slot="title" class="card-title clock">代办任务</p>-->
-          <!--<a href="#" slot="extra">更多 <Icon type="ios-arrow-right"></Icon></a>-->
-          <!--<ul>-->
-          <!--</ul>-->
-        <!--</i-card>-->
-      <!--</i-col>-->
-    <!--</i-row>-->
-
-    <!--<i-row :gutter="24">-->
-      <!--<i-col span="24">-->
-        <!--<i-card>-->
-          <!--<p slot="title" class="card-title alert">消息列表</p>-->
-          <!--<a href="#" slot="extra">更多 <Icon type="ios-arrow-right"></Icon></a>-->
-          <!--<div class="msg-list">-->
-            <!--<ul>-->
-            <!--</ul>-->
-          <!--</div>-->
-        <!--</i-card>-->
-      <!--</i-col>-->
-    <!--</i-row>-->
   </div>
 </template>
-<script>
-//  import Topbar from '@/pages/common/top-bar';
-//  import LeftNav from '@/pages/common/left-nav';
-//  import Topnav from '@/pages/common/top-nav';
-//  import VueHighcharts from 'vue2-highcharts';
-//  import CircleProgress from '@/components/circle-progress';
-//  import PTModal from '@/components/bs-modal';
-  // import {} from '@/assets/js/highcharts-more.js';
-//  import ChartOptions from './chartOptions';
+<script> 
   export default {
     name: 'pageHome',
     data() {
-      return {
-//        id: 'circle-first',
-//        todayDutyChartsOptions: ChartOptions.todayDutyChartsOptions,
-//        circleProgressOptions: ChartOptions.circleProgressOptions
+      return { 
       };
     },
-    components: {
-//      'vue2-highcharts': VueHighcharts,
-//      CircleProgress,
+    components: { 
     },
     computed: {
-      qrCodeUrl() {
-//        let merchantInfo = this.$userLogin.getLoginInfo().merchantInfo;
-//        if (merchantInfo) {
-//          return merchantInfo.qrCodeUrl;
-//        }
-//        return '';
+      qrCodeUrl() { 
       }
     }
   };

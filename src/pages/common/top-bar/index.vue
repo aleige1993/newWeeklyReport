@@ -9,7 +9,15 @@
         <li>
             <div>
               <!--<img class="top-avatar" src="./img/potrat.png" alt=""/>-->
-              欢迎您，管理员
+              <el-dropdown >
+              <span class="el-dropdown-link hoveraction">
+                欢迎您，管理员<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item @click.native="UpsetPasw">修改密码</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+              
             </div>
         </li>
         <!--<li><a href="javascript:;" @click="modifypwd"><i class="iconfont icon-xiugaimima"></i> <span>修改密码</span></a></li>-->
@@ -33,6 +41,9 @@ export default {
     // }
   },
   methods: {
+    UpsetPasw(){
+      this.$router.push('/chagePwd')
+    },
     modifypwd() {
       this.$store.dispatch('setMenuList', this.$store.getters.menuList.map((item, _index) => {
         item.active = false;
@@ -56,6 +67,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.hoveraction{
+  cursor: pointer;
+}
   .common-topbar{
     position: fixed;
     top: 0;

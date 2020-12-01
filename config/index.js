@@ -10,18 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    // proxyTable: {
-    //   '/api': {
-    //     target: 'http://3541l1m171.qicp.vip',
-    //     changeOrigin: true,
-    //     pathRewrite: {},
-    //     ws:false
-    //   }
-    // },
+    proxyTable: {
+      '/api': {
+          target: 'http://3541l1m171.qicp.vip', // 要代理的地址
+          changeOrigin: true, //允许跨域
+          secure: false,  // 如果是https接口的话，需要配置这个参数
+          pathRewrite: { },  //重写接口
+          ws: false
+      }
+   },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8088, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

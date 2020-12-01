@@ -8,6 +8,7 @@ export default new Router({
     { path: '/errors', name: 'errors', component: PageNotFound },
     { path: '/', name: '/', redirect:'/index/userInfo' , component: resolve => { require(['@/pages/page-login'], resolve) } },
     { path: '/login', name: 'login', component: resolve => { require(['@/pages/page-login'], resolve) } },
+    { path: '/chagePwd', name: 'changePwd', component: resolve => { require(['@/pages/changePassword'], resolve) } },
     {
       path: '/index', component: resolve => { require(['@/pages/page-index'], resolve) },
       children: [
