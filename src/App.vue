@@ -8,15 +8,7 @@
 export default {
   name: 'App',
   created(){
-    this.$userLogin.isLogin();
-    var enumList=[];
-    enumList.push({
-      EnumName:'weekStatus',
-      items:[{text:'草稿',value:'Drafted'},
-      {text:'已提交',value:'Submited'},
-      {text:'已批复',value:'Replyed'}]
-    });
-    this.$store.commit('setEnumList', enumList);
+    this.$UserLogin.isLogin();
   }
 }
 </script>
@@ -26,4 +18,12 @@ export default {
   text-align: right;
   margin-top: 10px;
 }
+ .nodata{
+    width:100%;
+    margin-top:20%;
+    text-align: center;
+    font-size: 24px;
+    color:#999;
+    background-color: #EDEDF0;
+  }
 </style>
