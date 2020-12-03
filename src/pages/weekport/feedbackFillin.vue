@@ -111,7 +111,7 @@ export default {
           } else {
             this.$notify({
               message: res.data.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })
@@ -124,19 +124,19 @@ export default {
       if (this.tiltes == "") {
         this.$notify({
           message: "请填写标题",
-          type: "warning",
+          type: "danger",
         });
         return false;
       } else if (this.message == "") {
         this.$notify({
           message: "请填写意见内容",
-          type: "warning",
+          type: "danger",
         });
         return false;
       } else if (this.istype == "") {
         this.$notify({
           message: "请选择意见类型",
-          type: "warning",
+          type: "danger",
         });
         return false;
       }
@@ -156,7 +156,7 @@ export default {
           } else {
             this.$notify({
               message: rescodes.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })

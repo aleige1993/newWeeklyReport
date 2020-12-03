@@ -112,19 +112,19 @@
             if(this.content == ''){
                  this.$notify({
                     message: '工作总结不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             }else if(this.action  == ''){
                  this.$notify({
                     message: '行为轨迹不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             }else if(this.result == ''){
                  this.$notify({
                     message: '工作效果不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             } 

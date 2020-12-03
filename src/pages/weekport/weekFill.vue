@@ -180,19 +180,19 @@ import {getWeekDay, getWeek,getNewData} from '../../assets/js/util'
             if(addWeekReport.weekPlans.length == 0){
                  this.$notify({
                     message: '本周工作总结不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             }else if(addWeekReport.weekNextPlans.length == 0){
                 this.$notify({
                     message: '下周工作计划不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             }else if(addWeekReport.weekMend.length == 0){
                 this.$notify({
                     message: '存在问题及改进措施不能为空',
-                    type: 'warning',
+                    type: 'danger',
                 })
                 return false
             } 
@@ -227,7 +227,7 @@ import {getWeekDay, getWeek,getNewData} from '../../assets/js/util'
                 }else{
                     this.$notify({
                         message: rescodes.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
                 }
             }).catch((err)=>{

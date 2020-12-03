@@ -121,7 +121,7 @@ export default {
           } else {
             this.$notify({
               message: rescodes.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })

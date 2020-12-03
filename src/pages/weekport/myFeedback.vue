@@ -77,7 +77,7 @@ export default {
       this.finished = false;
       this.loading = true;
       this.page = 1;
-      onLoad();
+      this.onLoad();
     },
     onLoad() {
       if (this.refreshing) {
@@ -103,7 +103,7 @@ export default {
           } else {
             this.$notify({
               message: rescodes.Message,
-              type: "warning",
+              type: "danger",
             });
           }
         })

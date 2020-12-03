@@ -37,7 +37,7 @@ class HttpApi {
             }).catch(err => {
                 Notify({
                     message:err.message,
-                    type: 'warning',
+                    type: 'danger',
                 })
                 console.log(err)
                     // error todo
@@ -72,7 +72,7 @@ class HttpApi {
             // error todo
             Notify({
                 message:err.message,
-                type: 'warning',
+                type: 'danger',
             })
             console.log(err)
                 // Vue.prototype.$Notice.error({ title: '错误提示', desc: err });

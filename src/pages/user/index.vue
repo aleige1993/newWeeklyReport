@@ -135,7 +135,7 @@ import UserLogin from '../../utils/UserLogin';
                 this.weekd = getWeek()
                 if(res.code==0){
                     this.isSubmit = res.data
-                    if(res.this == 'Y'){
+                    if(res.data == 'Y'){
                         this.showlayer = false
                     }else{
                          this.showlayer = true
@@ -143,7 +143,7 @@ import UserLogin from '../../utils/UserLogin';
                 }else{
                      this.$notify({
                         message: res.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
                 }
             }).catch((err)=>{
@@ -226,7 +226,7 @@ import UserLogin from '../../utils/UserLogin';
             }else{
                  this.$notify({
                         message: res.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
             }
         }).catch((err)=>{
@@ -246,7 +246,7 @@ import UserLogin from '../../utils/UserLogin';
             }else{
                  this.$notify({
                         message: res.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
             }
         }).catch((err)=>{

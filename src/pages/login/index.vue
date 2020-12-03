@@ -47,7 +47,7 @@
         }else{ 
           this.$notify({
               message: '账号或密码不正确',
-              type: 'warning',
+              type: 'danger',
           }) 
         }
          this.islogin = false

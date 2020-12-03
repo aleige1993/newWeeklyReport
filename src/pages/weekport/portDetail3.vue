@@ -74,7 +74,7 @@ export default {
        if(this.content == ''){
             this.$notify({
               message: '工作计划不能为空',
-              type: 'warning',
+              type: 'danger',
           })
           return false
         }

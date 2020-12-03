@@ -116,7 +116,7 @@ import {getWeekDay, getWeek,getNewData} from '../../assets/js/util'
                  }else{
                       this.$notify({
                         message: res.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
                     this.$toast.clear()
                  }
@@ -143,7 +143,7 @@ import {getWeekDay, getWeek,getNewData} from '../../assets/js/util'
                 }else{
                     this.$notify({
                         message: rescodes.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
                 }
             }).catch((err)=>{

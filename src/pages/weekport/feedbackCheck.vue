@@ -95,7 +95,7 @@ export default {
           } else {
             this.$notify({
               message: res.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })

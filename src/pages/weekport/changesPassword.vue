@@ -35,20 +35,21 @@ export default {
 
     methods: {
         submit(){
+            let _this = this
             if(this.paswd1 == ''){
                 this.$notify({
                     message: '请输入原始密码',
-                    type: 'warning',
+                    type: 'danger',
                 })
             }else if(this.paswd2 == ''){
                  this.$notify({
                     message: '请输入更新密码',
-                    type: 'warning',
+                    type: 'danger',
                 })
             }else if(this.paswd3 !== this.paswd2){
                  this.$notify({
                     message: '与更新密码不一致',
-                    type: 'warning',
+                    type: 'danger',
                 })
             }
             this.$HttpApi.post('/api/Employee/changepwd',{
@@ -61,12 +62,14 @@ export default {
                 if(rescodes.code){
                     this.$toast.success('修改成功!'); 
                     setTimeout(()=>{
-                        this.$router.push('/login')
+                        _this.$UserLogin.removeLoginInfo()
+                        window.location.href="/";
+                        // this.$router.push('/login')
                     },1500)
                 }else{
                     this.$notify({
                         message: rescodes.message,
-                        type: 'warning',
+                        type: 'danger',
                     })
                 }
             }).catch((err)=>{

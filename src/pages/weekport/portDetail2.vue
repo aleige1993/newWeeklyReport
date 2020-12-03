@@ -96,13 +96,13 @@ export default {
       if (this.content == "") {
         this.$notify({
           message: "问题不能为空",
-          type: "warning",
+          type: "danger",
         });
         return false;
       } else if (this.mend == "") {
         this.$notify({
           message: "改进措施不能为空",
-          type: "warning",
+          type: "danger",
         });
         return false;
       }

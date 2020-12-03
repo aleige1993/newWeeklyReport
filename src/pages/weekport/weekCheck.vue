@@ -239,7 +239,7 @@ export default {
       if (this.replyContent == "" || this.replyContent == null) {
         this.$notify({
           message: "批复意见不能为空",
-          type: "warning",
+          type: "danger",
         });
         return false;
       }
@@ -289,7 +289,7 @@ export default {
           } else {
             this.$notify({
               message: res.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })
@@ -314,7 +314,7 @@ export default {
           } else {
             this.$notify({
               message: rescodes.message,
-              type: "warning",
+              type: "danger",
             });
           }
         })
