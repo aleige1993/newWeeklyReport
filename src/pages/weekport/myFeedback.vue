@@ -147,6 +147,7 @@ export default {
 }
 .left_span {
   flex: 1;
+  line-height:60px;
 }
 .right_span {
   width: 200px;

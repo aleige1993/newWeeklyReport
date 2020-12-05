@@ -9,7 +9,7 @@
             offset="30"
             @load="onLoad"
         > -->
-   <div class="nothis" v-if="list.length<1">
+   <div class="nodata" v-if="list.length<1">
             暂无数据~
             </div>
           <div class="history">
@@ -212,5 +212,8 @@ import {getWeekDay, getWeek,getNewData} from '../../assets/js/util'
     }
      .mv_colors5{
         background-color: #FF8A56;
+    }
+    .titles{
+        line-height: 60px;
     }
 </style>

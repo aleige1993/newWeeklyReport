@@ -246,4 +246,7 @@ export default {
   line-height: 80px;
   display: inline-block;
 }
+.titles{
+  line-height: 60px;
+}
 </style>

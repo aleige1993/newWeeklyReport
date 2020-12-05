@@ -219,4 +219,7 @@ export default {
 .mv_colors5 {
   background-color: #ff8a56;
 }
+.titles{
+  line-height: 60px;
+}
 </style>

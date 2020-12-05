@@ -370,8 +370,8 @@ span.sp2 {
   color: #fff47e;
   font-size: 24px;
   margin-left: 10px;
-  display: inline-block;
-  max-width: 100px;
+  /* display: inline-block;
+  max-width: 100px; */
 }
 .change {
   color: #8dffe6;
