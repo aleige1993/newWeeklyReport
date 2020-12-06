@@ -49,19 +49,19 @@
       </div>
     </div>
     <div class="flexurlbox">
-      <li @click="gotoPage(1)">
+      <li @click="gotoPage(1)" v-if="writeWeek == 'Y'">
         <div>
           <img class="imga" src="@/assets/img/u_txzb.png" alt="" />
         </div>
         <span>填写活动周报</span>
       </li>
-      <li @click="gotoPage(2)">
+      <li @click="gotoPage(2)" v-if="writeWeek == 'Y'">
         <div>
           <img class="imga" src="@/assets/img/u_wdlis.png" alt="" />
         </div>
         <span>我的历史周报</span>
       </li>
-      <li v-if="isCheck" @click="gotoPage(3)">
+      <li @click="gotoPage(3)" v-if="seeWeek == 'Y'">
         <div>
           <img class="imga" src="@/assets/img/u_pf.png" alt="" />
         </div>
@@ -107,7 +107,9 @@ import UserLogin from '../../utils/UserLogin';
            isSubmit:"",
            isID:'',
            employeeName:'',
-           posNames:''
+           posNames:'',
+           seeWeek:'Y',
+           writeWeek:'Y'
       };
     }, 
     computed: {},
@@ -116,10 +118,10 @@ import UserLogin from '../../utils/UserLogin';
 
     mounted() {
         this.getSummary()
-        this.getSeeWeek()
         this.getExists()
         this.getWeekReport()
         this.getUserInfo()
+        this.getPower()
     },
 
     methods: {
@@ -128,6 +130,21 @@ import UserLogin from '../../utils/UserLogin';
        },
         onHideLayer(){
            this.showlayer = false 
+       },
+       getPower(){
+          this.$HttpApi.get(`/api/Employee/power`).then((res)=>{
+                if(res.code==0){
+                    this.seeWeek = res.data.seeWeek
+                    this.writeWeek = res.data.writeWeek
+                }else{
+                     this.$notify({
+                        message: res.message,
+                        type: 'danger',
+                    })
+                }
+            }).catch((err)=>{
+                
+            })
        },
          getExists(){
             let weekDate = getWeekDay()
@@ -159,21 +176,7 @@ import UserLogin from '../../utils/UserLogin';
             }).catch((err)=>{
                
             })
-       } ,
-         getSeeWeek(){
-        this.$HttpApi.get('/api/Employee/seeWeek').then((res)=>{
-            if(res.data == 'N'){
-                this.isCheck = false
-                this.$store.state.isSeeWeek = 'N' 
-            }else{
-                this.isCheck = true
-                this.$store.state.isSeeWeek = 'Y' 
-            }
-        }).catch((err)=>{
-           
-        }) 
        },
-
         //跳转修改密码
          changePswd () {
             this.$router.push('/layout/password')

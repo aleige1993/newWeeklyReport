@@ -1,5 +1,18 @@
 <template>
-  <div>
+
+  <div class="magin_top1">
+    <div class="tabls">
+        <li @click="changesType(1)">
+          <span :class="weekType == 1?'active':''">
+            直属管理
+          </span>
+        </li>
+        <li @click="changesType(2)">
+          <span :class="weekType == 2?'active':''">
+            间接管理
+          </span>
+        </li>
+      </div>
     <van-pull-refresh
       v-model="refreshing"
       @refresh="onRefresh"
@@ -93,15 +106,25 @@ export default {
       finished: false,
       page: 1,
       pageSize: 20,
+      weekType:1
     };
   },
   computed: {},
 
   beforeMount() {},
 
-  mounted() {},
+  mounted() {
+    this.weekType = this.$store.state.weekType;
+  },
 
   methods: {
+    changesType(val){
+      this.weekType =  val
+       this.$store.state.weekType = val;
+      this.list = []
+      this.onRefresh()
+
+  },
     gotoDateils(item) {
       this.$router.push({
         name: "weekCheck",
@@ -146,6 +169,9 @@ export default {
         .post("/api/WeekReview/leader/list", {
           page: this.page,
           pageSize: this.pageSize,
+          query:{
+            "weekType":this.weekType
+          }
         })
         .then((res) => {
           let rescodes = res.data;
@@ -173,6 +199,37 @@ export default {
 };
 </script>
 <style lang='css' scoped>
+.magin_top1{
+  padding-top: 80px !important;
+}
+.tabls{
+  display: flex;
+  justify-content: space-between;
+  background-color:#fff;
+  position: fixed;
+  width: 100%;
+  top: 90px;
+  left: 0;
+  z-index: 10;
+  line-height:90px;
+}
+.tabls li{
+  width: 50%;
+  text-align: center;
+}
+/* .tabls li:first-child{
+  border-right:1px solid #d4d4d4;
+} */
+.tabls li span{
+  /* border-bottom:4px solid #005C8D; */
+  border-bottom:6px solid #fff;
+  line-height: 80px;
+  display: inline-block;
+  padding:0 20px;
+}
+.tabls li span.active{
+  border-bottom:6px solid #005C8D !important;
+}
 .history {
   background-color: #fff;
   border-radius: 20px;

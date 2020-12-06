@@ -29,7 +29,7 @@ class HttpApi {
                 method: 'POST',
                 headers: _headers
             }).then(res => {
-                if(res.data.code == 401){
+                if(res.data.code == 401 || res.data.code == 403){
                     UserLogin.removeLoginInfo()
                     window.location.href="/"
                 }
@@ -63,7 +63,7 @@ class HttpApi {
             params: _params,
             headers: _headers
         }).then(res => {
-            if(res.data.code == 401){
+            if(res.data.code == 401 || res.data.code == 403){
                 UserLogin.removeLoginInfo()
                 window.location.href="/"
             }

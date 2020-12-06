@@ -276,6 +276,10 @@ export default {
               setTimeout(() => {
                 this.$router.push("/user");
               }, 1500);
+            }else{
+              setTimeout(() => {
+                this.$router.push("/layout/historyPort");
+              }, 1500);
             }
             if (val == 1) {
               (addWeekReport.weekPlans = []),

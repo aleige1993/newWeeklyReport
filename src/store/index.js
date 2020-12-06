@@ -12,6 +12,7 @@ export default new Vuex.Store({
         isUpdate:false,
         isWeekFill:'',
         isSeeWeek:'N',
+        weekType:1,
         addWeekReport:{
             "weekPlans": [],
             "weekNextPlans": [],
