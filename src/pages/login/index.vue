@@ -41,6 +41,11 @@
         userName:this.tel,
         userPwd:this.password
       }).then((res)=>{
+        this.$store.state.addWeekReport = {
+            weekPlans: [],
+            weekNextPlans: [],
+            weekMend: []
+        }
         if(res.data.code == 0){
           _this.$UserLogin.setLoginInfo(res.headers.token)
           _this.$router.push({name:'user'})
