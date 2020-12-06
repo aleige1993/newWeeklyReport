@@ -1,7 +1,8 @@
 <template>
   <div>
     <van-overlay :show="showlayer" @click="onHideLayer" z-index="5" />
-    <div class="review_box" v-if="boxIput">
+    <div class="review_box" v-if="boxIput"> 
+      <!-- boxIput -->
       <div class="had" v-if="isStatus == 'Replyed'">
         <span class="title">批复意见</span>
         <span class="name">{{ `批复人：${replyName}` }}</span>
@@ -454,6 +455,7 @@ export default {
   width: 100%;
   font-size: 28px;
   color: #333333;
+  line-height:50px;
 }
 .time_p {
   width: 100%;
