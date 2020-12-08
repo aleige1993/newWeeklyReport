@@ -41,6 +41,8 @@
         userName:this.tel,
         userPwd:this.password
       }).then((res)=>{
+        this.$store.state.isID = ''
+        this.$store.state.isWeekFill = ''
         this.$store.state.addWeekReport = {
             weekPlans: [],
             weekNextPlans: [],

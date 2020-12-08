@@ -1,7 +1,7 @@
 <template>
   <div>
-    <van-overlay :show="showlayer" @click="onHideLayer" z-index="5" />
-    <div class="comfirm" v-if="showlayer">
+    <van-overlay :show="showlayer && writeWeek == 'Y'" @click="onHideLayer" z-index="5" />
+    <div class="comfirm" v-if="showlayer && writeWeek == 'Y'">
       <div class="icon_text">
         <img src="@/assets/img/icon_gt.png" alt="" />
         <p class="showtest">
@@ -99,7 +99,7 @@ import UserLogin from '../../utils/UserLogin';
     data () {
       return {
             isCheck:false,
-           showlayer:false,
+           showlayer:true,
            delayWriteWeekCount:0,
            replyingWeekCount:0,
            suggestionCount:0,
@@ -109,7 +109,7 @@ import UserLogin from '../../utils/UserLogin';
            employeeName:'',
            posNames:'',
            seeWeek:'Y',
-           writeWeek:'Y'
+           writeWeek:'N'
       };
     }, 
     computed: {},
@@ -368,13 +368,17 @@ span.sp2 {
   color: #fff;
   font-size: 24px;
   margin-top: 20px;
+  text-align: center;
 }
 .role {
   color: #fff47e;
-  font-size: 24px;
-  margin-left: 10px;
-  /* display: inline-block;
-  max-width: 100px; */
+    font-size: 0.32rem;
+    margin-left: 0.13333rem;
+    display: inline-block;
+    max-width: 52%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .change {
   color: #8dffe6;
