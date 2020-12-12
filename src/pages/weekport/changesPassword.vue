@@ -62,6 +62,8 @@ export default {
                 if(rescodes.code){
                     this.$toast.success('修改成功!'); 
                     setTimeout(()=>{
+                        localStorage.removeItem('userTel');
+                        localStorage.removeItem('userPasw');
                         _this.$UserLogin.removeLoginInfo()
                         window.location.href="/";
                         // this.$router.push('/login')

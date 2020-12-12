@@ -4,7 +4,7 @@
       <div class="leftcss" @click="onGoBack">
         <img src="@/assets/img/left_jt.png" alt="" />
       </div>
-      <div class="content">填写周报{{isWeekFill}}</div>
+      <div class="content">填写周报</div>
     </div>
 
     <div class="scroll_view">

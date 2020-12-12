@@ -30,7 +30,12 @@
     beforeMount() {},
 
     mounted() {
-      console.log(11111)
+      if(localStorage.getItem('userTel')){
+          this.tel = localStorage.getItem('userTel')
+      }
+      if(localStorage.getItem('userPasw')){
+          this.password = localStorage.getItem('userPasw')
+      }
     },
 
     methods: {
@@ -49,6 +54,8 @@
             weekMend: []
         }
         if(res.data.code == 0){
+           localStorage.setItem('userTel', this.tel);
+           localStorage.setItem('userPasw', this.password);
           _this.$UserLogin.setLoginInfo(res.headers.token)
           _this.$router.push({name:'user'})
         }else{ 

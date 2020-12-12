@@ -379,6 +379,7 @@ span.sp2 {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-bottom: -4px;
 }
 .change {
   color: #8dffe6;
