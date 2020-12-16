@@ -5,7 +5,7 @@
   "author": "leihuang",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
     "start": "node server/bin/www",
     "build": "node build/build.js",
     "pm2": "pm2 start server/bin/www --name cms"
