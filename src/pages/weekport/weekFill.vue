@@ -178,7 +178,6 @@ export default {
       return this.$store.state.isUpdate;
     },
     isWeekFill: function () {
-      console.log('this.$store.state.isWeekFill', this.$store.state.isWeekFill)
       if (this.$store.state.isWeekFill == "Submited") {
         this.isCheck = true;
         return true;
@@ -196,7 +195,6 @@ export default {
     let weekend = getNewData(week, 6);
     this.weekstart = week;
     this.weekend = weekend;
-    console.log(' this.$store.state.isID', this.$store.state.isID)
   },
 
   methods: {
@@ -276,6 +274,7 @@ export default {
             this.$toast.success(str);
             this.$store.state.isID = "";
             this.$store.state.isUpdate = false;
+            // this.$store.state.newloding = true
             // if (val != 0) {
             //   setTimeout(() => {
             //     this.$router.push("/user");
@@ -292,7 +291,8 @@ export default {
             }
             setTimeout(() => {
               // this.$router.redirect("/user");
-                // window.location.href=""
+                // window.location.href="/#/user"
+                // this.$router.go(-1)
                  this.$router.replace({ path: "/user" });
             }, 1500);
 
@@ -318,7 +318,7 @@ export default {
 </script>
 <style lang='css' scoped>
 .leftcss{
-  width: 200px;
+  width: 140px;
 }
 .time_p {
   width: 100%;

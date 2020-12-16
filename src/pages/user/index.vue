@@ -114,7 +114,11 @@ import UserLogin from '../../utils/UserLogin';
     }, 
     computed: {},
 
-    beforeMount() {},
+    beforeMount() {
+      // if(this.$store.state.newloding== true){
+      //   window.location.reload()
+      // }
+    },
 
     mounted() {
         this.getSummary()
@@ -285,7 +289,12 @@ import UserLogin from '../../utils/UserLogin';
         }
     },
 
-    watch: {}
+    watch: {
+      $route(to,from){
+        console.log(to.path);
+        
+      }
+    }
   }
 </script>
 <style lang='css' scoped>
