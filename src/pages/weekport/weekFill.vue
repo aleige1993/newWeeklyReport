@@ -3,8 +3,10 @@
     <div class="headers">
       <div class="leftcss" @click="onGoBack">
         <img src="@/assets/img/left_jt.png" alt="" />
+        <span>首页</span>
       </div>
       <div class="content">填写周报</div>
+      <!-- <div class="rightcss">首页</div> -->
     </div>
 
     <div class="scroll_view">
@@ -274,20 +276,26 @@ export default {
             this.$toast.success(str);
             this.$store.state.isID = "";
             this.$store.state.isUpdate = false;
-            if (val != 0) {
-              setTimeout(() => {
-                this.$router.push("/user");
-              }, 1500);
-            }else{
-              setTimeout(() => {
-                this.$router.push("/layout/historyPort");
-              }, 1500);
-            }
+            // if (val != 0) {
+            //   setTimeout(() => {
+            //     this.$router.push("/user");
+            //   }, 1500);
+            // }else{
+            //   setTimeout(() => {
+            //     this.$router.push("/layout/historyPort");
+            //   }, 1500);
+            // }
             if (val == 1) {
-              (addWeekReport.weekPlans = []),
-                (addWeekReport.weekNextPlans = []),
-                (addWeekReport.weekMend = []);
+              addWeekReport.weekPlans = []
+              addWeekReport.weekNextPlans = []
+              addWeekReport.weekMend = []
             }
+            setTimeout(() => {
+              // this.$router.redirect("/user");
+                // window.location.href=""
+                 this.$router.replace({ path: "/user" });
+            }, 1500);
+
           } else {
             this.$notify({
               message: rescodes.message,
@@ -309,6 +317,9 @@ export default {
 };
 </script>
 <style lang='css' scoped>
+.leftcss{
+  width: 200px;
+}
 .time_p {
   width: 100%;
   height: 40px;

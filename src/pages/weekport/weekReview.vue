@@ -39,7 +39,7 @@
             :key="index"
             @click="gotoDateils(item)"
           >
-            <div class="titles">
+            <div class="van-ellipsis titles">
               {{ item.employeeName }} {{ dateChanges(item.weekDate) }}
             </div>
             <div class="rihtdiv">
@@ -278,5 +278,6 @@ export default {
 }
 .titles{
   line-height: 60px;
+  flex: 1;
 }
 </style>

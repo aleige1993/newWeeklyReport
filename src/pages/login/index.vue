@@ -6,7 +6,7 @@
       <div class="divgrap">
         <!-- <van-field v-model="tel" type="tel" placeholder="手机号码" />
         <van-field v-model="password" type="password" placeholder="密码" /> -->
-        <input class="inputtext"  v-model="tel" type="text" placeholder="手机号码" />
+        <input class="inputtext"  v-model="tel" type="text" placeholder="工号" />
         <input class="inputtext" v-model="password"  type="password" placeholder="密码"/>
          <van-button class="buttvat" @click="subLogin" round type="primary" :loading="islogin" >登录</van-button>
       </div>

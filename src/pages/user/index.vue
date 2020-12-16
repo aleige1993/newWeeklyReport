@@ -34,15 +34,15 @@
         </p>
       </div>
       <div class="pand">
-        <div class="flexbox">
+        <div class="flexbox" @click="delayWriteWeekf(delayWriteWeekCount)">
           <span class="sp1">{{ delayWriteWeekCount }}</span>
           <span class="sp2">待填周报</span>
         </div>
-        <div class="flexbox">
+        <div class="flexbox" @click="replyingWeekf(replyingWeekCount)">
           <span class="sp1">{{ replyingWeekCount }}</span>
           <span class="sp2">待批复周报</span>
         </div>
-        <div class="flexbox">
+        <div class="flexbox" @click="gotoPage(6)">
           <span class="sp1">{{ suggestionCount }}</span>
           <span class="sp2">匿名意见</span>
         </div>
@@ -125,6 +125,28 @@ import UserLogin from '../../utils/UserLogin';
     },
 
     methods: {
+      delayWriteWeekf(num){
+        if(this.writeWeek == 'N'){
+          this.$toast.fail('没有填写周报权限');
+          return false
+        }else if(num == 0 ){
+          this.$toast.fail('没有可填写的周报');
+          this.gotoPage(1)
+        }else{
+          this.gotoPage(1)
+        }
+      },
+      replyingWeekf(num){
+        if(this.seeWeek == 'N'){
+          this.$toast.fail('没有查看周报权限');
+          return false
+        }else if(num == 0){
+          this.$toast.fail('没有可待批复的周报');
+          this.gotoPage(3)
+        }else{
+          this.gotoPage(3)
+        }
+      },
          onShowLayer(){
            this.showlayer = true  
        },

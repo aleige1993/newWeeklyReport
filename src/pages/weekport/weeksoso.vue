@@ -1,10 +1,16 @@
 <template>
   <div>
+    <div class="checkout">
+      <van-radio-group class="groupsOut" v-model="checked" @change="checkedfunt()" direction="horizontal">
+        <van-radio name="1" checked-color="#005c8d">直属管理</van-radio>
+        <van-radio name="2" checked-color="#005c8d">间接管理</van-radio>
+      </van-radio-group>
+    </div>
     <div class="sosodiv">
       <input v-model="sosoval" class="inputso" placeholder="请输入员工姓名" />
       <span class="sotext" @click="onSearch">搜索</span>
     </div>
-    <div class="history">
+    <div class="history" :class="islist?'nobuag':''">
       <!-- <li>
             <div class="titles">111112020 ( 04.25-04.30 )</div>
             <div class="rihtdiv">
@@ -12,9 +18,9 @@
                 <img src="@/assets/img/right_jt.png">
             </div>
         </li> -->
-      <div class="nodata" v-if="islist">无数据，试试其他人~</div>
+      <div class="nodata" v-if="islist">无数据，试试其他人或其他类型~</div>
       <li v-for="(item, index) in list" :key="index" @click="gotoDateils(item)">
-        <div class="titles">
+        <div class="van-ellipsis titles">
           {{ item.employeeName }} {{ dateChanges(item.weekDate) }}
         </div>
         <div class="rihtdiv">
@@ -73,6 +79,7 @@ export default {
   props: [""],
   data() {
     return {
+      checked:'1',
       list: [],
       refreshing: false,
       loading: false,
@@ -100,13 +107,24 @@ export default {
         },
       });
     },
+    checkedfunt(){
+      console.log(this.checked)
+    },
     onSearch() {
+      if(this.sosoval == ''){
+        this.$notify({
+              message:'请输入员工姓名',
+              type: "danger",
+            });
+        return false
+       }
       this.$HttpApi
         .post("/api/WeekReview/leader/list", {
           page: 1,
           pageSize: 10000,
           query: {
             employeeName: this.sosoval,
+            weekType: parseInt(this.checked)
           },
         })
         .then((res) => {
@@ -177,10 +195,20 @@ export default {
 };
 </script>
 <style lang='css' scoped>
+.groupsOut{
+  justify-content: space-around;
+  margin-bottom:30px;
+}
+.checkout{
+  text-align: center;
+}
 .history {
   background-color: #fff;
   border-radius: 20px;
   padding-left: 37px;
+}
+.nobuag{
+  background-color: #ededed;
 }
 .history li {
   border-bottom: 1px solid #e2e2e2;
@@ -248,5 +276,6 @@ export default {
 }
 .titles{
   line-height: 60px;
+  flex: 1;
 }
 </style>
