@@ -29,9 +29,19 @@ class HttpApi {
                 method: 'POST',
                 headers: _headers
             }).then(res => {
-                if(res.data.code == 401 || res.data.code == 403){
+                // if(res.data.code == 401 || res.data.code == 403){
+                //     UserLogin.removeLoginInfo()
+                //     window.location.href="/"
+                // }
+                if(res.data.code == 401|| res.data.code == 403){
                     UserLogin.removeLoginInfo()
-                    window.location.href="/"
+                    Notify({
+                        message:'token验证过期，重新登录',
+                        type: 'danger',
+                    })
+                    setTimeout(()=>{
+                     window.location.href="/"
+                    },3000)
                 }
                 return res || {};
             }).catch(err => {
@@ -63,9 +73,19 @@ class HttpApi {
             params: _params,
             headers: _headers
         }).then(res => {
-            if(res.data.code == 401 || res.data.code == 403){
+            // if(res.data.code == 401 || res.data.code == 403){
+            //     UserLogin.removeLoginInfo()
+            //     window.location.href="/"
+            // }
+            if(res.data.code == 401|| res.data.code == 403){
                 UserLogin.removeLoginInfo()
-                window.location.href="/"
+                Notify({
+                    message:'token验证过期，重新登录',
+                    type: 'danger',
+                })
+                setTimeout(()=>{
+                 window.location.href="/"
+                },3000)
             }
             return res.data || {};
         }).catch(err => {

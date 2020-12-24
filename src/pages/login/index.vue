@@ -27,7 +27,9 @@
     }, 
     computed: {},
 
-    beforeMount() {},
+    beforeMount() {
+      sessionStorage.removeItem('loginInfo');
+    },
 
     mounted() {
       if(localStorage.getItem('userTel')){

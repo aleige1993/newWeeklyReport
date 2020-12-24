@@ -7,7 +7,7 @@ class UserLogin {
    * @returns {boolean}
    */
   isLogin() {
-          let localLoginInfo = window.localStorage.getItem(this.LOGININFOKEY);
+          let localLoginInfo = window.sessionStorage.getItem(this.LOGININFOKEY);
           if (typeof(localLoginInfo) !== 'undefined' && localLoginInfo !== '' && localLoginInfo !== null) {
               return true;
           } else {
@@ -20,8 +20,8 @@ class UserLogin {
        */
   getLoginInfo() {
           if (this.isLogin()) {
-              if(localStorage.getItem(this.LOGININFOKEY) !== 'undefined'){
-                  return JSON.parse(localStorage.getItem(this.LOGININFOKEY));
+              if(sessionStorage.getItem(this.LOGININFOKEY) !== 'undefined'){
+                  return JSON.parse(sessionStorage.getItem(this.LOGININFOKEY));
               }else{
                   return ''
               }
@@ -43,14 +43,15 @@ class UserLogin {
        * @returns {{}}
        */
   setLoginInfo(loginInfo) {
-          localStorage.setItem(this.LOGININFOKEY, JSON.stringify(loginInfo));
+        //   localStorage.setItem(this.LOGININFOKEY, JSON.stringify(loginInfo));
+          sessionStorage.setItem(this.LOGININFOKEY, JSON.stringify(loginInfo));
           return this.getLoginInfo();
       }
       /**
        * 清空登录信息
        */
   removeLoginInfo() {
-      localStorage.removeItem(this.LOGININFOKEY);
+      sessionStorage.removeItem(this.LOGININFOKEY);
   }
 }
 export default new UserLogin();
