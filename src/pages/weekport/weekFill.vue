@@ -191,10 +191,18 @@ export default {
   beforeMount() {},
 
   mounted() {
-    let week = getWeekDay();
-    let weekend = getNewData(week, 6);
-    this.weekstart = week;
-    this.weekend = weekend;
+    if(this.$store.state.weekstart == ''){
+      let week = getWeekDay();
+      let weekend = getNewData(week, 6);
+      this.weekstart = week;
+      this.weekend = weekend;
+    }else{ 
+      let weekend = getNewData(this.$store.state.weekstart, 6);
+      
+      this.weekstart = this.$store.state.weekstart;
+      this.weekend = weekend;
+    }
+   
   },
 
   methods: {
@@ -314,6 +322,9 @@ export default {
   },
 
   watch: {},
+  destroyed(){
+    
+  }
 };
 </script>
 <style lang='css' scoped>

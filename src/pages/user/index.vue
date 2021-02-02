@@ -126,6 +126,8 @@ import UserLogin from '../../utils/UserLogin';
         this.getWeekReport()
         this.getUserInfo()
         this.getPower()
+        this.weekd = getWeek()
+        this.$store.state.weekstart = ''
     },
 
     methods: {
