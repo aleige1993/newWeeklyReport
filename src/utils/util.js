@@ -38,7 +38,7 @@ export function fromTime(val){
 
  export function getNewData(dateTemp, days){  
     var dateTemp = dateTemp.split("-"); 
-    var nnDate = dateTemp[1]+'-'+dateTemp[2]+'-'+dateTemp[0]; //转换为MM-DD-YYYY格式    
+    var nnDate = dateTemp[1]+'/'+dateTemp[2]+'/'+dateTemp[0]; //转换为MM-DD-YYYY格式
     var nDate = new Date(nnDate.replace(/\s+/g,""));//这一步如果没有空格的话可以省略
     var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
     var rDate = new Date(millSeconds);
@@ -49,3 +49,40 @@ export function fromTime(val){
     if (date < 10) date = "0" + date;  
     return (year + "-" + month + "-" + date); 
 }
+
+
+
+
+
+
+export function toDate(str) {
+      if (str && typeof str == "string") {
+          str = str.replace(/T/g, ' ');
+          isUTC = str.substr(str.length - 1) === 'Z';
+          if (isUTC) {
+              str = str.substr(0,str.length-1);
+          }
+          var index = str.lastIndexOf('.');
+          if (index > -1 && str.substring(0, index).indexOf(':') > -1) {//去掉毫秒
+              str = str.substring(0, index);
+          }
+          var reg1 = /\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}/,
+              reg2 = /^\/Date\([0-9]{1,}\)\/$/g,
+              result;
+          if (reg1.test(str)) {
+              str = str.replace(/-/g, "/");
+              result=new Date(str);
+          } else if (reg2.test(str)) {
+              var dateNum = str.substr(6);
+              dateNum = dateNum.substring(0, dateNum.length - 2);
+              result = new Date(parseInt(dateNum));
+          } else {
+              result = new Date(str.replace(/\-/g, "/"));
+          }
+          if (isUTC) {
+              result = result.addHours(8);
+          }
+          return result;
+      }
+      return str;
+  } 

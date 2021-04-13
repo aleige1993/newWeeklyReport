@@ -11,8 +11,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-          // target:'http://3541l1m171.qicp.vip',
-          target: 'http://119.84.145.154:8600', // 要代理的地址
+          target:'http://3541l1m171.qicp.vip',
+          // target: 'http://119.84.145.154:8600', // 要代理的地址
           changeOrigin: true, //允许跨域
           secure: false,  // 如果是https接口的话，需要配置这个参数
           pathRewrite: { },  //重写接口

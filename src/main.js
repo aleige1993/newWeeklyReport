@@ -12,6 +12,8 @@ import UserLogin from './utils/UserLogin';
 import Tool from './utils/Tools';
 import '../src/assets/css/reset.css'
 import 'amfe-flexible'
+import moment  from "moment";
+Vue.prototype.$moment = moment ;
 Vue.prototype.$config = Config;
 Vue.prototype.$HttpApi = HttpApi
 Vue.prototype.$UserLogin = UserLogin;

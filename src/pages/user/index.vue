@@ -86,6 +86,13 @@
         </div>
         <span>大地意见广场</span>
       </li>
+
+      <li @click="gotoPage(7)" v-if="writeWeek == 'Y'">
+        <div>
+          <img class="imga" src="@/assets/img/u_txzb.png" alt="" />
+        </div>
+        <span>补填活动周报</span>
+      </li>
     </div>
   </div>
 </template>
@@ -176,6 +183,7 @@ import UserLogin from '../../utils/UserLogin';
        },
          getExists(){
             let weekDate = getWeekDay()
+            console.log('11111',weekDate)
             this.$HttpApi.get(`/api/WeekReview/exists/${weekDate}`).then((res)=>{
                 this.weekd = getWeek()
                 if(res.code==0){
@@ -233,6 +241,51 @@ import UserLogin from '../../utils/UserLogin';
                 this.$router.push('/layout/myfeedback')
             }else if(name == 6){
                 this.$router.push('/layout/feedback')
+            }else if(name == 7){
+                 let week = this.$moment().day(-6).format('YYYY-MM-DD') 
+          this.$HttpApi
+            .get(`/api/WeekReview/${week}`)
+            .then((res) => {
+              if (res.code == 0) { 
+                let addWeekReport = this.$store.state.addWeekReport;
+                if (res.data && res.data.id) {
+                  this.$store.state.weekstart = week
+                  this.$store.state.isID = res.data.id;
+                  this.$store.state.isWeekFill = res.data.status;
+                }
+                if (res.data == null) {
+                     this.$store.state.weekstart = week
+                    this.$store.state.isID = ''
+                  addWeekReport.weekPlans = []
+                    addWeekReport.weekNextPlans = []
+                    addWeekReport.weekMend = []
+                  this.$store.state.isWeekFill = "";
+                } else {
+                    this.$store.state.weekstart = week
+                  addWeekReport.weekPlans = res.data.weekPlans
+                    ? res.data.weekPlans
+                    : []
+                    addWeekReport.weekNextPlans = res.data.weekNextPlans
+                      ? res.data.weekNextPlans
+                      : []
+                    addWeekReport.weekMend = res.data.weekMend
+                      ? res.data.weekMend
+                      : []
+                } 
+                 setTimeout(() => {
+                  this.$toast.clear();
+                  this.$router.push({
+                    path: "/layout/weekfill"
+                  });
+                }, 2000);
+              } else {
+                this.$notify({
+                  message: res.message,
+                  type: "danger",
+                });
+              }
+            })
+            .catch((err) => {});
             }
          },
        getWeekReport(){
