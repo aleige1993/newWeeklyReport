@@ -284,6 +284,7 @@ import UserLogin from '../../utils/UserLogin';
             }
          },
        getWeekReport(){
+         let _this = this
           this.$toast.loading({
             message: "加载中...",
             forbidClick: true,
@@ -293,24 +294,24 @@ import UserLogin from '../../utils/UserLogin';
             this.$HttpApi.get(`/api/WeekReview/${week}`).then((res)=>{
             if(res.code == 0){
                let addWeekReport = this.$store.state.addWeekReport
-               if(res.data.id){ 
-                    this.$store.state.isID = res.data.id
-                     this.$store.state.isWeekFill = res.data.status
-                } 
+               
                if(res.data == null){
                 addWeekReport.weekPlans = [],
                 addWeekReport.weekNextPlans = [],
                 addWeekReport.weekMend =[]
                 this.$store.state.isWeekFill = ""
-               }else{
+               }else if(res.data && res.data.id){ 
+                    this.$store.state.isID = res.data.id
+                    this.$store.state.isWeekFill = res.data.status
+               } else{
                 addWeekReport.weekPlans = res.data.weekPlans?res.data.weekPlans:[],
                 addWeekReport.weekNextPlans = res.data.weekNextPlans?res.data.weekNextPlans:[],
                 addWeekReport.weekMend = res.data.weekMend?res.data.weekMend:[]
                } 
                  setTimeout(() => { 
-                  this.$toast.clear();
-                 this.$router.push({path:'/layout/weekfill', query:{
-                      isID:res.data.id, 
+                  _this.$toast.clear();
+                 _this.$router.push({path:'/layout/weekfill', query:{
+                      isID:res.data? res.data.id:'', 
                   }}) 
                 }, 1500);
             }else{
@@ -321,7 +322,7 @@ import UserLogin from '../../utils/UserLogin';
                     })
             }
         }).catch((err)=>{
-            
+            console.log(err)
         }) 
 
         },
