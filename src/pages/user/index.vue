@@ -61,7 +61,7 @@
         </div>
         <span>我的历史周报</span>
       </li>
-      <li @click="gotoPage(3)" v-if="seeWeek == 'Y'">
+      <li @click="gotoPage(3)" v-if="seeWeek == 'Y'" >
         <div>
           <img class="imga" src="@/assets/img/u_pf.png" alt="" />
         </div>
@@ -87,12 +87,12 @@
         <span>大地意见广场</span>
       </li>
 
-      <li @click="gotoPage(7)" v-if="writeWeek == 'Y'">
+      <!-- <li @click="gotoPage(7)" v-if="writeWeek == 'Y'">
         <div>
           <img class="imga" src="@/assets/img/u_txzb.png" alt="" />
         </div>
         <span>补填活动周报</span>
-      </li>
+      </li> -->
     </div>
   </div>
 </template>
@@ -115,7 +115,7 @@ import UserLogin from '../../utils/UserLogin';
            isID:'',
            employeeName:'',
            posNames:'',
-           seeWeek:'Y',
+           seeWeek:'N',
            writeWeek:'N'
       };
     }, 
@@ -130,7 +130,6 @@ import UserLogin from '../../utils/UserLogin';
     mounted() {
         this.getSummary()
         this.getExists()
-        this.getWeekReport()
         this.getUserInfo()
         this.getPower()
         this.weekd = getWeek()
@@ -183,7 +182,6 @@ import UserLogin from '../../utils/UserLogin';
        },
          getExists(){
             let weekDate = getWeekDay()
-            console.log('11111',weekDate)
             this.$HttpApi.get(`/api/WeekReview/exists/${weekDate}`).then((res)=>{
                 this.weekd = getWeek()
                 if(res.code==0){
@@ -226,11 +224,8 @@ import UserLogin from '../../utils/UserLogin';
             //          isStuts = 2
             //     }
             //     this.$router.currentRoute.value.query
-            //   this.$router.push({path:'/layout/weekfill',query:{'isStuts':isStuts}})
-             this.$router.push({path:'/layout/weekfill', query:{
-                isID:this.isID,
-
-             }})
+            //   this.$router.push({path:'/layout/weekfill',query:{'isStuts':isStuts}}) 
+             this.getWeekReport()
             }else if(name == 2){
                 this.$router.push('/layout/historyPort')
             }else if(name == 3){
@@ -289,6 +284,11 @@ import UserLogin from '../../utils/UserLogin';
             }
          },
        getWeekReport(){
+          this.$toast.loading({
+            message: "加载中...",
+            forbidClick: true,
+            loadingType: "spinner",
+          });
             let week = getWeekDay()
             this.$HttpApi.get(`/api/WeekReview/${week}`).then((res)=>{
             if(res.code == 0){
@@ -306,8 +306,15 @@ import UserLogin from '../../utils/UserLogin';
                 addWeekReport.weekPlans = res.data.weekPlans?res.data.weekPlans:[],
                 addWeekReport.weekNextPlans = res.data.weekNextPlans?res.data.weekNextPlans:[],
                 addWeekReport.weekMend = res.data.weekMend?res.data.weekMend:[]
-               }
+               } 
+                 setTimeout(() => { 
+                  this.$toast.clear();
+                 this.$router.push({path:'/layout/weekfill', query:{
+                      isID:res.data.id, 
+                  }}) 
+                }, 1500);
             }else{
+              this.$toast.clear();
                  this.$notify({
                         message: res.message,
                         type: 'danger',
@@ -550,5 +557,13 @@ span.sp2 {
 .hhecol {
   font-size: 30px;
   color: #005c8d;
+}
+.gray { 
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
 }
 </style>
