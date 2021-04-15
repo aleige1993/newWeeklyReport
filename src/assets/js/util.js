@@ -38,7 +38,7 @@ export function fromTime(val){
 
  export function getNewData(dateTemp, days){  
     var dateTemp = dateTemp.split("-"); 
-    var nnDate = dateTemp[1]+'-'+dateTemp[2]+'-'+dateTemp[0]; //转换为MM-DD-YYYY格式    
+    var nnDate = dateTemp[1]+'/'+dateTemp[2]+'/'+dateTemp[0]; //转换为MM-DD-YYYY格式
     var nDate = new Date(nnDate.replace(/\s+/g,""));//这一步如果没有空格的话可以省略
     var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
     var rDate = new Date(millSeconds);
