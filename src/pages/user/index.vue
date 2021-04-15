@@ -294,16 +294,16 @@ import UserLogin from '../../utils/UserLogin';
             this.$HttpApi.get(`/api/WeekReview/${week}`).then((res)=>{
             if(res.code == 0){
                let addWeekReport = this.$store.state.addWeekReport
-               
+               if(res.data && res.data.id){ 
+                    this.$store.state.isID = res.data.id
+                     this.$store.state.isWeekFill = res.data.status
+                } 
                if(res.data == null){
                 addWeekReport.weekPlans = [],
                 addWeekReport.weekNextPlans = [],
                 addWeekReport.weekMend =[]
                 this.$store.state.isWeekFill = ""
-               }else if(res.data && res.data.id){ 
-                    this.$store.state.isID = res.data.id
-                    this.$store.state.isWeekFill = res.data.status
-               } else{
+               }else{
                 addWeekReport.weekPlans = res.data.weekPlans?res.data.weekPlans:[],
                 addWeekReport.weekNextPlans = res.data.weekNextPlans?res.data.weekNextPlans:[],
                 addWeekReport.weekMend = res.data.weekMend?res.data.weekMend:[]
