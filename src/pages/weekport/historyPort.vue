@@ -173,7 +173,7 @@ export default {
                     addWeekReport.weekMend = []
                      this.$store.state.weekstart = ''
                 } else {
-                     this.$store.state.weekstart = ''
+                     this.$store.state.weekstart = week
                   addWeekReport.weekPlans = res.data.detail.weekPlans
                     ? res.data.detail.weekPlans
                     : []
