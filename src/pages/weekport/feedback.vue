@@ -75,7 +75,8 @@ export default {
           content: item.content,
           depID:item.depID,
           userType:3,
-          depName:item.depName
+          depName:item.depName,
+          caseID: item.id
         },
       });
     },

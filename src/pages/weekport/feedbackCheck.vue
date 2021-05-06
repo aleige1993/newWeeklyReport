@@ -180,7 +180,8 @@ export default {
       columns: [],
       depName:'',
       valueCol: "",
-      commitList:[]
+      commitList:[],
+      caseID:''
     };
   },
   computed: {},
@@ -197,6 +198,7 @@ export default {
       this.userType = query.userType;
       this.depID =  query.depID
       this.depName = query.depName
+      this.caseID = query.caseID
     }
     this.getTypes();
     this.getCommitList()
@@ -207,7 +209,7 @@ export default {
       this.$HttpApi
         .get("/api/SuggestionComment/list",{
           userType: this.userType,
-          suggID: this.depID
+          suggID: this.caseID
         })
         .then((res) => {
           if (res.code == 0) {
@@ -267,7 +269,7 @@ export default {
           this.$HttpApi
             .post("/api/SuggestionComment/comment", {
              "sendType": this.userType,
-              "suggID": this.depID,
+              "suggID": this.caseID,
               "content": this.commitText
             })
             .then((res) => {

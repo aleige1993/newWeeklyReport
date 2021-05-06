@@ -42,7 +42,7 @@
           <span class="sp1">{{ replyingWeekCount }}</span>
           <span class="sp2">待批复周报</span>
         </div>
-        <div class="flexbox" @click="gotoPage(6)">
+        <div class="flexbox" @click="gotoPage(5)">
           <span class="sp1">{{ suggestionCount }}</span>
           <span class="sp2">匿名意见</span>
         </div>
@@ -386,7 +386,7 @@ import UserLogin from '../../utils/UserLogin';
   border-radius:100%;
   top:10px;
   right:10px;
-  z-index: 10;
+  z-index: 3;
   background-color: #e10000 !important;
 }
 .flexurlbox {
