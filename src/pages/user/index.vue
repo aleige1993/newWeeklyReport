@@ -75,6 +75,7 @@
       </li>
       <li @click="gotoPage(5)">
         <div>
+          <div class="reacts" v-if="noReadEmpSuggCommentCount>0"></div>
           <img class="imga" src="@/assets/img/u_wdls.png" alt="" />
         </div>
         <span>我的历史意见</span>
@@ -87,12 +88,20 @@
         <span>大地意见广场</span>
       </li>
 
-      <!-- <li @click="gotoPage(7)" v-if="writeWeek == 'Y'">
+      <li @click="gotoPage(7)" v-if="writeWeek == 'Y'">
         <div>
-          <img class="imga" src="@/assets/img/u_txzb.png" alt="" />
+          <img class="imga" src="@/assets/img/yqbt.png" alt="" />
         </div>
-        <span>补填活动周报</span>
-      </li> -->
+        <span>逾期周报补填</span>
+      </li>
+      <!-- v-if="writeSuggComment == 'Y'" -->
+      <li @click="gotoPage(8)"   v-if="writeSuggComment == 'Y'">
+        <div>
+          <div class="reacts" v-if="noReadManagerSuggCommentCount>0"></div>
+          <img class="imga" src="@/assets/img/yjpf.png" alt="" />
+        </div>
+        <span>本部门意见批复</span>
+      </li>
     </div>
   </div>
 </template>
@@ -116,7 +125,10 @@ import UserLogin from '../../utils/UserLogin';
            employeeName:'',
            posNames:'',
            seeWeek:'N',
-           writeWeek:'N'
+           writeWeek:'N',
+           writeSuggComment:'N',
+           noReadEmpSuggCommentCount:0,
+           noReadManagerSuggCommentCount:0
       };
     }, 
     computed: {},
@@ -170,6 +182,7 @@ import UserLogin from '../../utils/UserLogin';
                 if(res.code==0){
                     this.seeWeek = res.data.seeWeek
                     this.writeWeek = res.data.writeWeek
+                    this.writeSuggComment = res.data.writeSuggComment
                 }else{
                      this.$notify({
                         message: res.message,
@@ -206,7 +219,9 @@ import UserLogin from '../../utils/UserLogin';
                 const respoen = res.data
                 this.delayWriteWeekCount = respoen.delayWriteWeekCount,
                 this.replyingWeekCount= respoen.replyingWeekCount,
-                this.suggestionCount= respoen.suggestionCount
+                this.suggestionCount= respoen.suggestionCount,
+                this.noReadEmpSuggCommentCount= respoen.noReadEmpSuggCommentCount,
+                this.noReadManagerSuggCommentCount= respoen.noReadManagerSuggCommentCount
             }).catch((err)=>{
                
             })
@@ -281,6 +296,8 @@ import UserLogin from '../../utils/UserLogin';
               }
             })
             .catch((err) => {});
+            }else if(name == 8){
+              this.$router.push('/layout/tribeFeedback')
             }
          },
        getWeekReport(){
@@ -361,6 +378,17 @@ import UserLogin from '../../utils/UserLogin';
   }
 </script>
 <style lang='css' scoped>
+.reacts{
+  position: absolute !important;
+  width:14px !important;
+  height:14px !important;
+  display: inline-block;
+  border-radius:100%;
+  top:10px;
+  right:10px;
+  z-index: 10;
+  background-color: #e10000 !important;
+}
 .flexurlbox {
   width: 90%;
   margin-left: 5%;
@@ -384,6 +412,7 @@ import UserLogin from '../../utils/UserLogin';
   background-color: #005c8d;
   text-align: center;
   line-height: 150px;
+  position: relative;
 }
 .flexurlbox li span {
   color: #333;

@@ -117,7 +117,17 @@ export default new Router({
             meta: { title: '匿名意见 - 查看' },
             component: () =>
                 import ('@/pages/weekport/feedbackCheck')
+        },
+        {
+            path: 'tribeFeedback',
+            name: 'tribeFeedback',
+            meta: { title: '本部门意见批复' },
+            component: () =>
+                import ('@/pages/weekport/tribeFeedback')
         }
+
+
+        
     ]
 } 
 ],

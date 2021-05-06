@@ -22,7 +22,7 @@
             :key="index"
             @click="gotofeedDateils(item)"
           >
-            <span class="van-ellipsis left_span"> <a class="newxinxi" v-if="item.noReadCommentCount>0">N</a> {{ item.title }}</span>
+            <span class="van-ellipsis left_span"><a class="newxinxi" v-if="item.noReadCommentCount>0">N</a>{{ item.title }}</span>
             <div class="right_span">
               <span>{{ fromTime(item.createTime) }}</span>
               <img class="right_jt" src="@/assets/img/right_jt.png" alt="" />
@@ -71,7 +71,7 @@ export default {
           categoryName: item.categoryName,
           content: item.content,
           depID:item.depID,
-          userType:1,
+          userType:2,
           depName:item.depName
         },
       });
@@ -86,10 +86,9 @@ export default {
       if (this.refreshing) {
         this.list = [];
         this.refreshing = false;
-      }
-
+      } 
       this.$HttpApi
-        .post("/api/Suggestion/list", {
+        .post("/api/Suggestion/auth/list", {
           page: this.page,
           pageSize: this.pageSize,
         })

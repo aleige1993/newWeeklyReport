@@ -73,6 +73,9 @@ export default {
           title: item.title,
           categoryName: item.categoryName,
           content: item.content,
+          depID:item.depID,
+          userType:3,
+          depName:item.depName
         },
       });
     },
