@@ -3,6 +3,12 @@
     暂无数据~
 </div> -->
   <div>
+    <div class="headers">
+      <div class="leftcss" @click="onGoBack">
+        <img src="@/assets/img/left_jt.png" alt="" />
+      </div>
+      <div class="content">我的历史意见</div>
+    </div>
     <van-pull-refresh
       v-model="refreshing"
       @refresh="onRefresh"
@@ -82,6 +88,10 @@ export default {
       this.loading = true;
       this.page = 1;
       this.onLoad();
+    },
+    onGoBack() {
+      this.$store.state.isUpdate = false;
+      this.$router.replace({ path: "/user" });
     },
     onLoad() {
       if (this.refreshing) {

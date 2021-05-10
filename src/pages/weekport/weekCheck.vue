@@ -248,20 +248,39 @@ export default {
       this.boxIput = false;
     },
     getSeeWeek() {
-      this.$HttpApi
-        .get("/api/Employee/seeWeek")
-        .then((res) => {
-          if (res.data == "N") {
-            this.isCheck = false;
-            this.$store.state.isSeeWeek = "N";
-          } else {
-            this.isCheck = true;
-            this.$store.state.isSeeWeek = "Y";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.$HttpApi.get(`/api/Employee/power`).then((res)=>{
+                if(res.code==0){
+                    if (res.data.seeWeek == "N") {
+                        this.isCheck = false;
+                        this.$store.state.isSeeWeek = "N";
+                      } else {
+                        this.isCheck = true;
+                        this.$store.state.isSeeWeek = "Y";
+                      }
+
+                }else{
+                     this.$notify({
+                        message: res.message,
+                        type: 'danger',
+                    })
+                }
+            }).catch((err)=>{
+                
+            })
+      // this.$HttpApi
+      //   .get("/api/Employee/seeWeek")
+      //   .then((res) => {
+      //     if (res.data == "N") {
+      //       this.isCheck = false;
+      //       this.$store.state.isSeeWeek = "N";
+      //     } else {
+      //       this.isCheck = true;
+      //       this.$store.state.isSeeWeek = "Y";
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
     //查看周报
     getCheckweek() {

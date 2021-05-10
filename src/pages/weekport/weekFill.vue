@@ -270,6 +270,7 @@ export default {
         weekNextPlans: addWeekReport.weekNextPlans,
         weekMend: addWeekReport.weekMend,
       };
+      // console.log('(this.$store.state.isID', this.$store.state.isID)
       if (this.$store.state.isID) {
         parms.id = this.$store.state.isID;
       }
@@ -295,15 +296,11 @@ export default {
             if (val == 1) {
               addWeekReport.weekPlans = []
               addWeekReport.weekNextPlans = []
-              addWeekReport.weekMend = []
+              addWeekReport.weekMend = [] 
             }
-            setTimeout(() => {
-              // this.$router.redirect("/user");
-                // window.location.href="/#/user"
-                // this.$router.go(-1)
-                 this.$router.replace({ path: "/user" });
-            }, 1500);
-
+            setTimeout(() => { 
+                  this.$router.replace({ path: "/user" });
+              }, 1500);
           } else {
             this.$notify({
               message: rescodes.message,
