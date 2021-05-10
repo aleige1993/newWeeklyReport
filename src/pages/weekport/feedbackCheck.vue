@@ -67,10 +67,10 @@
             <div class="userdata" v-if="item.sendType == 1">
                <span>{{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
                <span>{{item.empName}}</span>
-              <img src="@/assets/img/u_yj.png"  /> 
+              <img src="@/assets/img/checkUser.png"  /> 
             </div>
             <div class="userdata" v-else>
-                <img src="@/assets/img/u_yj.png"  />
+                <img src="@/assets/img/checkUser.png"  />
                 <span>{{item.empName}}</span>
                 <span> {{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
             </div>
@@ -85,10 +85,10 @@
             <div class="userdata" v-if="item.sendType != 1">
                <span>{{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
                <span>{{item.empName}}</span>
-              <img src="@/assets/img/u_yj.png"  /> 
+              <img src="@/assets/img/checkUser.png"  /> 
             </div>
             <div class="userdata" v-else>
-                <img src="@/assets/img/u_yj.png"  />
+                <img src="@/assets/img/checkUser.png"  />
                 <span>匿名</span>
                 <span> {{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
             </div>
@@ -103,10 +103,10 @@
             <div class="userdata" v-if="item.sendType != 1">
                <span>{{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
                <span>{{item.empName}}</span>
-              <img src="@/assets/img/u_yj.png"  /> 
+              <img src="@/assets/img/checkUser.png"  /> 
             </div>
             <div class="userdata" v-else>
-                <img src="@/assets/img/u_yj.png"  />
+                <img src="@/assets/img/checkUser.png"  />
                 <span>匿名</span>
                 <span> {{$moment(item.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
             </div>
@@ -343,13 +343,13 @@ flex-direction: column;
   align-items: center;
 }
 .userdata img{
-  width: 20px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
 }
 .userdata span{
   font-size: 24px;
   color: #C1C1C1;
-  margin:0 4px;
+  margin:0 8px;
 }
 .testconent{
   line-height: 40px;
