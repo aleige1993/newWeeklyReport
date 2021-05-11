@@ -395,7 +395,7 @@ import UserLogin from '../../utils/UserLogin';
   margin-top: 10%;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
 .flexurlbox li {
   width: 33%;
