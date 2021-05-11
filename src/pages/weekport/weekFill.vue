@@ -281,7 +281,8 @@ export default {
           if (rescodes.code == 0) {
             let str = val == 1 ? "提交成功" : "保存成功";
             this.$toast.success(str);
-            this.$store.state.isID = "";
+            this.reGetWeek()
+            // this.$store.state.isID = "";
             this.$store.state.isUpdate = false;
             // this.$store.state.newloding = true
             // if (val != 0) {
@@ -296,11 +297,12 @@ export default {
             if (val == 1) {
               addWeekReport.weekPlans = []
               addWeekReport.weekNextPlans = []
-              addWeekReport.weekMend = [] 
-            }
-            setTimeout(() => { 
+              addWeekReport.weekMend = []
+               setTimeout(() => { 
                   this.$router.replace({ path: "/user" });
               }, 1500);
+            }
+           
           } else {
             this.$notify({
               message: rescodes.message,
@@ -311,6 +313,19 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    reGetWeek(){
+       this.$HttpApi
+            .get(`/api/WeekReview/${this.weekstart}`)
+            .then((res) => {
+              if (res.code == 0) {  
+                if (res.data && res.data.id) {
+                  this.$store.state.isID = res.data.id;
+                }
+              }
+            }).catch(err=>{
+              console.log(err)
+            })
     },
     onGoBack() {
       this.$store.state.isUpdate = false;
